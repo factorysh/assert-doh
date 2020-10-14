@@ -32,4 +32,4 @@ class Resolver:
 if __name__ == "__main__":
     endpoint = os.getenv("RESOLVER", "https://cloudflare-dns.com/dns-query")
     r = Resolver(endpoint)
-    print(r.query("bearstech.com", "TXT"))
+    print(r.query("bearstech.com", "TXT").answer)

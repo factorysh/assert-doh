@@ -1,5 +1,8 @@
 # Assert DNS Over Https
 
+DOH client for [RFC 8484](https://tools.ietf.org/html/rfc8484) with HTTP/2,
+GET and POST.
+
 ## Install
 
     python3 -m venv venv

@@ -14,12 +14,14 @@ class Resolver:
 
     def query(self, queryname, rdtype=rdatatype.ANY):
         q = message.make_query(queryname, rdtype)
-        response = self.client.post(self.server,
-                                    headers={
-                                        "Accept": "application/dns-message",
-                                        "Content-Type": "application/dns-message"
-                                    },
-                                    content=q.to_wire())
+        response = self.client.post(
+            self.server,
+            headers={
+                "Accept": "application/dns-message",
+                "Content-Type": "application/dns-message",
+            },
+            content=q.to_wire(),
+        )
         assert response.status_code == 200
         print(response.headers)
         r = message.from_wire(response.content)
@@ -27,7 +29,7 @@ class Resolver:
         return r
 
 
-if __name__ == '__main__':
-    endpoint = os.getenv('RESOLVER', 'https://cloudflare-dns.com/dns-query')
+if __name__ == "__main__":
+    endpoint = os.getenv("RESOLVER", "https://cloudflare-dns.com/dns-query")
     r = Resolver(endpoint)
-    print(r.query('bearstech.com', 'TXT'))
+    print(r.query("bearstech.com", "TXT"))

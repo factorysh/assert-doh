@@ -22,7 +22,9 @@ class Resolver:
                                     content=q.to_wire())
         assert response.status_code == 200
         print(response.headers)
-        return message.from_wire(response.content)
+        r = message.from_wire(response.content)
+        print(q.id, r.id)
+        return r
 
 
 if __name__ == '__main__':
